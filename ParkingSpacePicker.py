@@ -11,7 +11,6 @@ try:
 except:
     posList = []
 
-
 def mouseClick(events, x, y, flags, params):
     #왼쪽 클릭을 했을 때 원하는 주차공간에 대한 설정이 가능하게 한다.
     if events == cv2.EVENT_LBUTTONDOWN:
@@ -35,3 +34,5 @@ while True:
     cv2.imshow("Image", img)
     cv2.setMouseCallback("Image", mouseClick)
     cv2.waitKey(1)
+
+#test1
