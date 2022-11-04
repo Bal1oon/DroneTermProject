@@ -5,13 +5,32 @@ import datetime
 import time
 import numpy as np
 
-# Video feed
-cap = cv2.VideoCapture('carPark.mp4')
+videos = ['carPark.mp4',
+         #'carPark2.mp4',
+         'carOut.mp4']
 
-with open('CarParkPos', 'rb') as f:
+positions = ['carParkPos_carPark',
+          # 'carParkPos_carPark2',
+           'carParkPos_carOut']
+
+wh = {'carPark.mp4': (107, 48),
+      #'carPark2.mp4': (110, 60),
+      'carOut.mp4': (600, 250)}
+
+weights = [900,
+           #900,
+           3000]
+idx = 0
+
+# Video feed
+cap = cv2.VideoCapture(videos[idx])
+
+with open(positions[idx], 'rb') as f:
     posList = pickle.load(f)
 
-width, height = 107, 48
+width, height = wh[videos[idx]]
+
+root = time.time()
 
 root = time.time()
 
@@ -23,10 +42,10 @@ def checkParkingSpace(imgPro):
         x, y = pos
 
         imgCrop = imgPro[y:y + height, x:x + width]
-        # cv2.imshow(str(x * y), imgCrop)
+        #cv2.imshow(str(x * y), imgCrop)
         count = cv2.countNonZero(imgCrop)
 
-        if count < 900:
+        if count < weights[idx]:
             color = (255, 0, 0)
             thickness = 2
             spaceCounter += 1
@@ -41,7 +60,6 @@ def checkParkingSpace(imgPro):
     cvzone.putTextRect(img, f'Vacant space: {spaceCounter}/{len(posList)}', (230, 50), scale=3,
                        thickness=2, offset=20, colorR=(0, 0, 0))
     return spaceCounter
-
 
 while True:
     curTime = time.time()
