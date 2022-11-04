@@ -32,6 +32,8 @@ width, height = wh[videos[idx]]
 
 root = time.time()
 
+root = time.time()
+
 
 def checkParkingSpace(imgPro):
     spaceCounter = 0
@@ -58,7 +60,6 @@ def checkParkingSpace(imgPro):
     cvzone.putTextRect(img, f'Vacant space: {spaceCounter}/{len(posList)}', (230, 50), scale=3,
                        thickness=2, offset=20, colorR=(0, 0, 0))
     return spaceCounter
-
 
 while True:
     curTime = time.time()
