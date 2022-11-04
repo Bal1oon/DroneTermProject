@@ -2,11 +2,24 @@ import cv2
 # 모든 주차 공간들을 저장한 후 main.py에 전송
 import pickle
 
+images = ['carParkImg.png',
+         #'carPark2Img.png',
+         'carOutImg.png']
+
+positions = ['carParkPos_carPark',
+          # 'carParkPos_carPark2',
+           'carParkPos_carOut']
+
+wh = {'carParkImg.png': (107, 48),
+      #'carPark2Img.png': (107, 48),
+      'carOutImg.png': (600, 250)}
+
+idx = 0
 #이미지에서 주차 공간 한 칸의 길이와 높이
-width, height = 107, 48
+width, height = wh[images[idx]]
 
 try:
-    with open('CarParkPos', 'rb') as f:
+    with open(positions[idx], 'rb') as f:
         posList = pickle.load(f)
 except:
     posList = []
@@ -22,11 +35,11 @@ def mouseClick(events, x, y, flags, params):
             if x1 < x < x1 + width and y1 < y < y1 + height:
                 posList.pop(i)
 
-    with open('CarParkPos', 'wb') as f:
+    with open(positions[idx], 'wb') as f:
         pickle.dump(posList, f)
 
 while True:
-    img = cv2.imread('carParkImg.png')
+    img = cv2.imread(images[idx])
     # 주차 공간 하나의 크기를 정하는 for loop
     for pos in posList:
         cv2.rectangle(img, pos, (pos[0] + width, pos[1] + height), (255, 255, 255), 2)
