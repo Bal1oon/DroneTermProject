@@ -5,22 +5,22 @@ import datetime
 import time
 import numpy as np
 
-videos = ['carPark.mp4',
-         #'carPark2.mp4',
-         'carOut.mp4']
+videos = ['video/carPark.mp4',
+         #'video/carPark2.mp4',
+         'video/carOut.mp4']
 
-positions = ['carParkPos_carPark',
-          # 'carParkPos_carPark2',
-           'carParkPos_carOut']
+positions = ['pos/carParkPos_carPark',
+          # 'pos/carParkPos_carPark2',
+           'pos/carParkPos_carOut']
 
-wh = {'carPark.mp4': (107, 48),
-      #'carPark2.mp4': (110, 60),
-      'carOut.mp4': (600, 250)}
+wh = {'video/carPark.mp4': (107, 48),
+      #'video/carPark2.mp4': (110, 60),
+      'video/carOut.mp4': (600, 250)}
 
 weights = [900,
            #900,
            3000]
-idx = 0
+idx = 1
 
 # Video feed
 cap = cv2.VideoCapture(videos[idx])
@@ -98,4 +98,5 @@ while True:
     cv2.imshow("Image", img)
     # cv2.imshow("ImageBlur", imgBlur)
     # cv2.imshow("ImageThres", imgMedian)
-    cv2.waitKey(10)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
