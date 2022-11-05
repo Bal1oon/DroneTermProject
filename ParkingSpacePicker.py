@@ -2,17 +2,17 @@ import cv2
 # 모든 주차 공간들을 저장한 후 main.py에 전송
 import pickle
 
-images = ['carParkImg.png',
-         #'carPark2Img.png',
-         'carOutImg.png']
+images = ['images/carParkImg.png',
+         #'images/carPark2Img.png',
+         'images/carOutImg.png']
 
-positions = ['carParkPos_carPark',
-          # 'carParkPos_carPark2',
-           'carParkPos_carOut']
+positions = ['pos/carParkPos_carPark',
+          # 'pos/carParkPos_carPark2',
+           'pos/carParkPos_carOut']
 
-wh = {'carParkImg.png': (107, 48),
-      #'carPark2Img.png': (107, 48),
-      'carOutImg.png': (600, 250)}
+wh = {'images/carParkImg.png': (107, 48),
+      #'images/carPark2Img.png': (107, 48),
+      'images/carOutImg.png': (600, 250)}
 
 idx = 0
 #이미지에서 주차 공간 한 칸의 길이와 높이
@@ -46,6 +46,8 @@ while True:
 
     cv2.imshow("Image", img)
     cv2.setMouseCallback("Image", mouseClick)
-    cv2.waitKey(1)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 #test1
