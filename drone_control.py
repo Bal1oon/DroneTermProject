@@ -13,7 +13,7 @@ recorder = 0
 def videoRecorder():
     height, width, _ = frame_read.frame.shape
     now = datetime.datetime.now()
-    video = cv2.VideoWriter(f'video {now}.mp4', cv2.VideoWriter_fourcc(*'XVID'), 30, (width, height))
+    video = cv2.VideoWriter(f'record/video {now}.mp4', cv2.VideoWriter_fourcc(*'XVID'), 30, (width, height))
 
     while keepRecording:
         video.write(frame_read.frame)
@@ -37,9 +37,9 @@ time.sleep(2)
 # biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
 
 # Load a picture and learn how to recognize it
-shin_image = face_recognition.load_image_file("Shin.jpeg")
+shin_image = face_recognition.load_image_file("face/Shin.jpeg")
 shin_face_encoding = face_recognition.face_encodings(shin_image)[0]
-lee_image = face_recognition.load_image_file("Lee.jpg")
+lee_image = face_recognition.load_image_file("face/Lee.jpg")
 lee_face_encoding = face_recognition.face_encodings(lee_image)[0]
 
 # Create arrays of known face encodings and their names
@@ -104,7 +104,7 @@ while True:
                 for administrator in administrators:
                     if name == administrator:
                         adminOK = True
-                        print("Administrator Pass\nKeep Controlling")
+                        print("Administrator Pass. Keep Controlling")
                         break
                     if name == "Unknown":
                         control = False
