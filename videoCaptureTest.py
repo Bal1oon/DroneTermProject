@@ -1,5 +1,6 @@
 import cv2
 
+#비디오 캡쳐 py 파일
 video = cv2.VideoCapture(0)
 
 ret = False
