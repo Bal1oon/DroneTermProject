@@ -2,6 +2,8 @@ import cv2
 # 모든 주차 공간들을 저장한 후 main.py에 전송
 import pickle
 
+#ParkingSpacePicker.py에 관련 정보들 기입
+
 #이미지에서 주차 공간 한 칸의 길이와 높이
 width, height = 1400, 550
 

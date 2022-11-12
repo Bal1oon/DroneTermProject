@@ -5,6 +5,8 @@ import datetime
 import time
 import numpy as np
 
+#추후 여러 가지 비디오 및 시연 영상 추가 빌드 예정
+
 videos = ['video/carPark.mp4',
          #'video/carPark2.mp4',
          'video/carOut.mp4']
