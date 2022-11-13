@@ -5,7 +5,9 @@ import pickle
 #이미지 로드
 images = ['images/carParkImg.png',
          #'images/carPark2Img.png',
-         'images/carOutImg.png']
+         'images/carOutImg.png',
+        # 'images/carOutIMg3.jpg'
+          ]
 
 #공간 저장해서 write back
 positions = ['pos/carParkPos_carPark',
