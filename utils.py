@@ -1,3 +1,4 @@
+#드론 조정
 from djitellopy import Tello
 import cv2
 import time
