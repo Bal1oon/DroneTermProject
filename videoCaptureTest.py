@@ -1,11 +1,13 @@
 import cv2
 
+#비디오 캡쳐 py 파일
 video = cv2.VideoCapture(0)
 
+#False를 default로
 ret = False
 scale = 2
 
-i=0
+i = 0
 
 while True:
     ret, frame = video.read()
@@ -21,7 +23,7 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('s'):
         cv2.imwrite(f"captures/test{i}.jpg", resize)  # writes image test.bmp to disk
         print("Take Picture")
-        i+=1
+        i += 1
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 video.release()

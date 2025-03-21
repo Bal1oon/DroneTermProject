@@ -2,14 +2,19 @@ import cv2
 # 모든 주차 공간들을 저장한 후 main.py에 전송
 import pickle
 
+#이미지 로드
 images = ['images/carParkImg.png',
          #'images/carPark2Img.png',
-         'images/carOutImg.png']
+         'images/carOutImg.png',
+        # 'images/carOutIMg3.jpg'
+          ]
 
+#공간 저장해서 write back
 positions = ['pos/carParkPos_carPark',
           # 'pos/carParkPos_carPark2',
            'pos/carParkPos_carOut']
 
+#한 공간 당 좌표 설정
 wh = {'images/carParkImg.png': (107, 48),
       #'images/carPark2Img.png': (107, 48),
       'images/carOutImg.png': (600, 250)}
@@ -24,6 +29,7 @@ try:
 except:
     posList = []
 
+#마우스 클릭 이벤트
 def mouseClick(events, x, y, flags, params):
     #왼쪽 클릭을 했을 때 원하는 주차공간에 대한 설정이 가능하게 한다.
     if events == cv2.EVENT_LBUTTONDOWN:
@@ -47,7 +53,6 @@ while True:
     cv2.imshow("Image", img)
     cv2.setMouseCallback("Image", mouseClick)
 
+    # keyboard q 입력을 통해 사각형 그리는 image 화면 quit
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-#test1
